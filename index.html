@@ -251,11 +251,11 @@
   section.page-section{ padding:88px 0; border-bottom:1px solid var(--hairline); scroll-margin-top:90px; }
   section.page-section.tinted{ background:#F8FAF8; }
   .section-eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:11.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--green); margin-bottom:14px;
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:17px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--green); margin-bottom:16px;
   }
-  .section-eyebrow::before{ content:""; width:22px; height:2px; background:var(--gold); display:inline-block; }
+  .section-eyebrow::before{ content:""; width:26px; height:2px; background:var(--gold); display:inline-block; }
   .section-head{ max-width:760px; margin-bottom:48px; }
   .section-head h2{ font-size:clamp(24px,3vw,34px); letter-spacing:-0.01em; margin-bottom:16px; line-height:1.25; }
   .section-head p{ font-size:16px; line-height:1.75; color:var(--ink-soft); }
@@ -332,15 +332,15 @@
   .callout-strip p{ font-size:14.5px; font-weight:700; color:#5c4413; line-height:1.6; }
 
   /* ---- Challenges & Strengths: async development ---- */
-  .coexist-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:44px; }
+  .coexist-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:44px; max-width:600px; }
   @media (max-width:640px){ .coexist-grid{ grid-template-columns:1fr; } }
-  .coexist-card{ border-radius:var(--radius); padding:22px 20px; }
+  .coexist-card{ border-radius:var(--radius); padding:16px 18px; }
   .coexist-card.strength{ background:#EEF6F0; border:1px solid #cfe7d7; }
   .coexist-card.challenge{ background:#FBF0EC; border:1px solid #ecd3c6; }
-  .coexist-card h4{ font-size:25px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; margin-bottom:12px; }
+  .coexist-card h4{ font-size:25px; font-weight:800; letter-spacing:.03em; text-transform:uppercase; margin-bottom:8px; }
   .coexist-card.strength h4{ color:var(--green); }
   .coexist-card.challenge h4{ color:#a9502f; }
-  .coexist-card ul{ margin:0; padding-left:18px; font-size:14px; line-height:1.9; color:var(--ink); }
+  .coexist-card ul{ margin:0; padding-left:16px; font-size:12.5px; line-height:1.6; color:var(--ink); }
 
   .async-chart{ display:grid; gap:14px; }
   .async-row{ display:grid; grid-template-columns:150px 1fr; align-items:center; gap:16px; }
@@ -569,21 +569,6 @@
             <span data-lang="ja">AIアシスタントに質問する</span><span data-lang="en">Ask the AI Assistant</span>
           </button>
         </div>
-
-        <div class="hero-stats">
-          <div class="stat">
-            <b>15+</b>
-            <span data-lang="ja">対象年齢（歳〜）</span><span data-lang="en">Built for ages 15+</span>
-          </div>
-          <div class="stat">
-            <b>10</b>
-            <span data-lang="ja">学習セクション</span><span data-lang="en">Learning sections</span>
-          </div>
-          <div class="stat">
-            <b>2</b>
-            <span data-lang="ja">対応言語（日本語・英語）</span><span data-lang="en">Languages — Japanese & English</span>
-          </div>
-        </div>
       </div>
 
       <div class="hero-art">
@@ -660,7 +645,7 @@
             <circle cx="190" cy="165" r="42" fill="#1E3A5F"/>
           </svg>
           <span class="trait-tag" style="top:6%; left:2%;"><span data-lang="ja">高度な推理</span><span data-lang="en">Advanced reasoning</span></span>
-          <span class="trait-tag" style="top:2%; right:0%;"><span data-lang="ja">創造性</span><span data-lang="en">Creativity</span></span>
+          <span class="trait-tag" style="top:14%; right:10%;"><span data-lang="ja">創造性</span><span data-lang="en">Creativity</span></span>
           <span class="trait-tag" style="top:32%; right:-6%;"><span data-lang="ja">好奇心</span><span data-lang="en">Curiosity</span></span>
           <span class="trait-tag" style="bottom:28%; right:-4%;"><span data-lang="ja">パターン認識</span><span data-lang="en">Pattern recognition</span></span>
           <span class="trait-tag" style="bottom:2%; right:8%;"><span data-lang="ja">問題解決</span><span data-lang="en">Problem-solving</span></span>
