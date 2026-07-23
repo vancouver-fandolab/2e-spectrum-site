@@ -9,6 +9,62 @@
 // Body:     { "message": "ユーザーの質問", "lang": "ja" | "en" }
 // Response: { "reply": "アシスタントの回答" }
 
+// A condensed summary of the site's actual content, so the model answers
+// from what this specific site says rather than generic outside knowledge
+// that might not match the site's framing.
+const SITE_KNOWLEDGE = `
+[Home] Tagline: "Embrace Potential, Empower Futures." Serves students,
+parents, and educators aged 15+.
+
+[About] Mission: advance awareness, understanding, and inclusion for gifted,
+neurodivergent, and twice-exceptional (2E) people through research-based
+information and practical resources.
+
+[What is Giftedness?] Not just high IQ or top grades — includes exceptional
+potential, advanced cognitive ability, creativity, and a distinct thinking/
+learning style. Myth vs. reality: (myth) always top grades → (reality)
+ability and performance don't always align; (myth) no support needed →
+(reality) may need academic, emotional, or organizational support; (myth)
+excels at everything → (reality) ability often develops unevenly.
+
+[What is Neurodiversity?] Natural variation in thinking/learning/communication.
+Neurotypical = development typical for one's culture. Neurodivergent =
+development that differs (ADHD, autism, dyslexia, dysgraphia, dyscalculia).
+Strengths/challenges: ADHD (creative thinking, high energy / sustained
+attention, time management); autism (deep expertise, attention to detail /
+social communication, sensory sensitivity); dyslexia (spatial reasoning,
+big-picture thinking / decoding text, reading speed); dysgraphia (verbal idea
+generation / handwriting, written composition); dyscalculia (verbal reasoning
+/ number processing, quantity sense).
+
+[What is 2E?] Gifted AND has neurodevelopmental differences/learning
+disabilities. Three masking patterns: (1) strengths mask struggles — high
+intelligence compensates, looks average; (2) struggles mask strengths —
+visible challenges dominate, talent overlooked; (3) mutual masking — both
+cancel out. Key message: average performance ≠ average potential.
+
+[Challenges & Strengths] Strengths (creativity, curiosity, advanced reasoning)
+and challenges (anxiety, perfectionism, executive-function difficulty,
+isolation) coexist. Asynchronous development: intellectual, academic,
+emotional, social, executive-function domains develop at different speeds.
+
+[Identification & Assessment] Whole-person process — cognitive ability,
+academic performance, executive function & attention, communication,
+social-emotional profile, sensory profile, family/teacher observation. For an
+actual assessment, the site recommends starting with a pediatrician, school
+counselor, or licensed psychologist (the site is not itself a directory).
+
+[Educational Support] Ontario, Canada (formally recognizes giftedness as an
+"intellectual exceptionality," IEP-based differentiated learning) vs. Japan
+(no single national system; university/research partnerships, ICT, programs
+like the JST Junior Doctor Program).
+
+[Resources] Research archive, professional directory (e.g. Japan Society for
+Gifted & 2E Studies, Mensa International, SENG), parent guides.
+
+[Contact] A contact form at the bottom of the page.
+`;
+
 const SYSTEM_PROMPT = {
   ja: `あなたは「2E Spectrum」という教育サイトのAIアシスタントです。
 このサイトは、ギフテッド（gifted）、ニューロダイバーシティ（neurodiversity）、
@@ -16,8 +72,15 @@ const SYSTEM_PROMPT = {
 教育者に向けて、研究に基づいた正確な情報をわかりやすく伝えることを目的として
 います。
 
+以下はこのサイトの実際のコンテンツ要約です（英語表記ですが、回答は日本語で
+行い、この内容を優先して根拠にしてください）:
+${SITE_KNOWLEDGE}
+
 回答のルール：
 - 常に丁寧で、支援的、包摂的な日本語で答えてください。
+- 上記のサイト内容に基づいて回答し、そこにない事実（特定の団体名・数値・研究結果
+  など）を断定的に作り話ししないでください。サイトにない情報を聞かれた場合は、
+  正直に「サイトにはその情報が掲載されていません」と伝えてください。
 - 断定的な医療診断や心理診断は行わないでください。あくまで一般的な教育情報の
   提供にとどめ、個別の診断や治療が必要な場合は専門家（医師・心理士・スクール
   カウンセラーなど）に相談するよう案内してください。
@@ -32,8 +95,15 @@ giftedness, neurodiversity, and twice-exceptionality (2E), built for students,
 parents, and educators aged 15 and up. Your job is to explain research-based
 information clearly and supportively.
 
+Here is a summary of what this specific site actually says. Ground your
+answers in this content first:
+${SITE_KNOWLEDGE}
+
 Response rules:
 - Always answer in a warm, professional, inclusive tone.
+- Base answers on the site content above. Don't confidently invent facts that
+  aren't in it (specific organization names, statistics, studies, etc.) — if
+  asked about something the site doesn't cover, say so honestly.
 - Do not give medical or psychological diagnoses. Stick to general educational
   information, and suggest consulting a qualified professional (doctor,
   psychologist, school counselor, etc.) for individual assessment or treatment
