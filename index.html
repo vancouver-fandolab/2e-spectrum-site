@@ -685,10 +685,10 @@
         </p>
 
         <div class="hero-ctas">
-          <button class="btn-primary">
+          <a href="#2e" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">
             <span data-lang="ja">2Eについて学ぶ →</span><span data-lang="en">Explore What 2E Means →</span>
-          </button>
-          <button class="btn-secondary">
+          </a>
+          <button class="btn-secondary" id="heroAskAiBtn" type="button">
             <span data-lang="ja">AIアシスタントに質問する</span><span data-lang="en">Ask the AI Assistant</span>
           </button>
         </div>
@@ -1495,6 +1495,23 @@
 </footer>
 
 <script>
+  /* ===================== HERO "ASK THE AI" BUTTON ===================== */
+  (function(){
+    var btn = document.getElementById('heroAskAiBtn');
+    if (!btn) return;
+    btn.addEventListener('click', function(){
+      var target = document.getElementById('ai-assistant');
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Focus the chat input shortly after the scroll starts, so the
+      // person can start typing immediately without an extra click.
+      setTimeout(function(){
+        var input = document.getElementById('chatInput');
+        if (input) input.focus({ preventScroll: true });
+      }, 500);
+    });
+  })();
+
   /* ===================== MOBILE MENU ===================== */
   (function(){
     var toggle = document.querySelector('.menu-toggle');
