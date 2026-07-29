@@ -178,8 +178,15 @@ export default async function handler(req, res) {
             },
           ],
           generationConfig: {
-            maxOutputTokens: 400,
+            // Gemini 3.x models "think" before answering, and those internal
+            // reasoning tokens are deducted from maxOutputTokens too — with
+            // too small a budget, thinking alone can consume it all and cut
+            // the visible answer off mid-sentence. We give plenty of headroom
+            // and also ask for minimal thinking, since this assistant only
+            // needs to answer simple, well-scoped FAQ-style questions.
+            maxOutputTokens: 1024,
             temperature: 0.6,
+            thinkingConfig: { thinkingBudget: 0 },
           },
         }),
       }
